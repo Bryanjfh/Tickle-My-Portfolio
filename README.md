@@ -2,4 +2,4 @@
 HackISU - 2018
 
 
-<a href="https://iextrading.com/developer/docs/#financials" target="_blank">Stock API</a>
+[Stock API](https://iextrading.com/developer/docs/#financials){:target="_blank"}
