@@ -6,6 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Home</title>
     <link rel="stylesheet" href="style.css" />
+    <script src="main.js"></script>
 </head>
 
 <body class="signin">
@@ -14,7 +15,7 @@
             <u>{User}</u>
         </h1>
         <div><span id="totalValue"></span></div>
-        <button class="addbutton" onclick="javascript:document.getElementById('addpopup').style.display = 'block';return true;">+</button>
+        <button class="addbutton" onClick="javascript:document.getElementById('addpopup').style.display = 'block';return true;">+</button>
     </div>
     <div id="menuButtons">
         <button class="button" onclick="">Stock</button>
@@ -25,7 +26,7 @@
 </body>
 
 <div id="addpopup">
-    <form action="javascript:addClick()">
+    <form onsubmit="return addClick();">
         <label for="name">Stock Name:</label>
         <input type="text" name="name" id="stockName">
         <label for="shares">Shared Purchased:</label>
