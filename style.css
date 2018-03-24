@@ -1,0 +1,544 @@
+/* authentication/styles/base.scss */
+
+:focus {
+  outline: 0;
+}
+
+html {
+  height: 100%;
+}
+
+body {
+  height: 100%;
+  line-height: 1;
+  font: 13px / 18px 'Avenir Next', 'ProximaNova', 'Helvetica Neue', Arial, sans-serif;
+  color: #666;
+  -webkit-font-smoothing: antialiased;
+}
+
+a:link {
+  color: #69C8FF;
+  text-decoration: none;
+}
+
+a:visited {
+  color: #69C8FF;
+  text-decoration: none;
+}
+
+a:hover {
+  color: #A3DCFF;
+  text-decoration: underline;
+}
+
+a img {
+  border: 0;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p {
+  font-weight: normal;
+  margin: 0;
+  padding: 0;
+}
+
+/* authentication/styles/fonts.scss */
+
+@font-face {
+  font-family: 'ProximaNova';
+  src: url('https://static.cmcdn.net/kits/16/fonts/ProximaNova-Reg.woff') format('woff');
+  font-weight: 400;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'ProximaNova';
+  src: url('https://static.cmcdn.net/kits/16/fonts/ProximaNova-Sbold.woff') format('woff');
+  font-weight: 500;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'ProximaNova';
+  src: url('https://static.cmcdn.net/kits/16/fonts/ProximaNova-Bold.woff') format('woff');
+  font-weight: 700;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'carbonmade';
+  src: url('https://static.cmcdn.net/kits/84/fonts/carbonmade/fonts/carbonmade.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+}
+
+/* authentication/styles/signin.scss */
+
+body.signin,
+body.passwordresets {
+  background: linear-gradient(to bottom, #5b5b77 50%, #29283b 100%);
+}
+
+body.signin #content #inner {
+  width: 100%;
+}
+
+body.signin #content {
+  position: absolute;
+  top: 50%;
+  margin-top: -200px;
+  left: 50%;
+  -webkit-transform: translate(-50%, 0);
+  transform: translate(-50%, 0);
+  padding: 0;
+  max-width: 500px;
+  width: auto;
+  overflow: visible;
+}
+
+body.signin .close:before {
+  content: '';
+}
+
+body.signin .close:hover {
+  opacity: 1;
+}
+
+body.signin .close {
+  color: #999;
+  font-size: 16px;
+  line-height: 40px;
+  font-weight: 500;
+  cursor: pointer;
+  opacity: 0.8;
+}
+
+body.passwordresets #content #inner {
+  width: 100%;
+}
+
+body.passwordresets #content {
+  position: absolute;
+  top: 50%;
+  margin-top: -200px;
+  left: 50%;
+  -webkit-transform: translate(-50%, 0);
+  transform: translate(-50%, 0);
+  padding: 0;
+  max-width: 500px;
+  width: auto;
+}
+
+.topHead {
+  height: 40px;
+  padding: 17px 30px;
+  text-align: center;
+}
+
+.topHead .signUp:hover {
+  text-decoration: none;
+  opacity: 1;
+}
+
+.topHead .signUp:after {
+  content: '→';
+  font-size: 19px;
+  position: absolute;
+  top: 2px;
+  right: 0;
+}
+
+.topHead .signUp {
+  display: none;
+  position: relative;
+  height: 40px;
+  line-height: 40px;
+  font-size: 18px;
+  font-weight: 500;
+  color: #28a5db;
+  padding: 0 25px 0 0;
+  float: right;
+  opacity: 0.8;
+}
+
+.topHead .logo {
+  display: block;
+  width: 110px;
+  height: 40px;
+  float: left;
+  background-image: url('../../network/img/logotype-grey.svg');
+  background-size: 110px;
+  background-repeat: no-repeat;
+  background-position: right center;
+  color: transparent;
+}
+
+#signinLogo {
+  position: relative;
+  display: block;
+  width: 50px;
+  height: 50px;
+  margin: -50px auto 16px;
+  background-image: url('../../images/header/uniface-knockout.svg');
+  background-repeat: no-repeat;
+  background-size: 48px;
+  background-position: center;
+  background-color: #433b5f;
+  border-radius: 100%;
+  z-index: 10;
+}
+
+#headline {
+  position: relative;
+  font-size: 28px;
+  line-height: 30px;
+  color: #D7D7EC;
+  text-align: center;
+  margin: 0 0 24px;
+  letter-spacing: 0;
+}
+
+#signinBlock {
+  margin: 0 auto;
+  max-width: 400px;
+  padding: 20px 24px 24px;
+  background-color: #fff;
+  border-radius: 8px;
+}
+
+#signinBlock h2 {
+  font-size: 28px;
+  line-height: 30px;
+  color: #aa84d1;
+  text-align: center;
+  margin: 0 0 15px;
+  letter-spacing: 0;
+}
+
+h1 {
+  display: inline;
+  font-size: 50px;
+  line-height: 30px;
+  color: #aa84d1;
+  text-align: left;
+  margin: 0 0 15px;
+  letter-spacing: 0;
+}
+
+#header {
+  height: 70px;
+}
+
+#signinBlock .formContainer .signinRow label {
+  padding-bottom: 6px;
+  font-size: 18px;
+  color: #888;
+}
+
+#signinBlock .formContainer .signinRow {
+  display: block;
+  position: relative;
+  margin: 0 0 15px;
+}
+
+#signinBlock input.fillin {
+  padding: 15px;
+  height: 30px;
+  width: 370px;
+  border: none;
+  border-bottom: 2px solid #f2f3f3;
+  color: rgba(128, 130, 133, 1);
+  background-color: #fff;
+  font: 400 22px / 30px 'Avenir Next', 'ProximaNova', 'Helvetica Neue', Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  box-shadow: none;
+  border-radius: 0;
+}
+
+#signinBlock input.fillin:focus {
+  border-bottom: 2px solid #95d2ec;
+}
+
+#signinBlock .error input.fillin {
+  border-bottom: 2px solid #ed656c;
+}
+
+#signinBlock ::placeholder {
+  color: rgba(128, 130, 133, 0.7);
+  font-weight: 400;
+}
+
+#signinBlock input.fillin:focus::placeholder {
+  color: rgba(0, 0, 0, 0.15);
+}
+
+#signinBlock .passRow.field input.fillin {
+  padding-right: 65px;
+  width: 320px;
+}
+
+#signinBlock .passRow.field .errorBlip {
+  right: 68px;
+}
+
+.resetPassLink {
+  position: absolute;
+  bottom: 0px;
+  right: 0px;
+  padding: 0 15px 0 5px;
+  font-size: 14px;
+  line-height: 60px;
+  color: #28a5db;
+  opacity: 0.7;
+  z-index: 20;
+}
+
+.resetPassLink:hover {
+  text-decoration: none;
+  opacity: 1;
+}
+
+#signinBlock .field .message:before {
+  display: block;
+  position: absolute;
+  left: -6px;
+  right: auto;
+  top: 14px;
+  content: "";
+  width: 0px;
+  height: 0px;
+  border-style: solid;
+  border-width: 6px 6px 6px 0;
+  border-color: transparent #f8ca5c transparent transparent;
+}
+
+#signinBlock .field .message {
+  opacity: 0;
+  visibility: hidden;
+  display: block;
+  position: absolute;
+  top: inherit;
+  right: auto;
+  bottom: 12px;
+  left: 100%;
+  width: auto;
+  height: auto;
+  max-width: 310px;
+  padding: 10px 15px;
+  margin: 0px;
+  font-size: 14px;
+  line-height: 20px;
+  height: 20px;
+  font-weight: 500;
+  background: #f8ca5c;
+  color: #7d532b;
+  border-radius: 3px;
+  white-space: nowrap;
+  z-index: 10;
+  -webkit-transition: margin-left .3s cubic-bezier(0, 0.005, 0.265, 1.8), opacity .1s ease;
+  transition: margin-left .3s cubic-bezier(0, 0.005, 0.265, 1.8), opacity .1s ease;
+}
+
+#signinBlock .field .errorBlip {
+  display: block;
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  bottom: 20px;
+  right: 0.7em;
+  text-align: center;
+  background: center no-repeat url('../../images/form/18-sad.svg');
+  background-size: 18px;
+  border-radius: 100%;
+  visibility: hidden;
+  opacity: 0;
+  -webkit-transition: opacity 0.2s ease-in-out;
+  transition: opacity 0.2s ease-in-out;
+  z-index: 100;
+  pointer-events: none;
+}
+
+#signinBlock .field.invalid .message {
+  display: block;
+  opacity: 1;
+  visibility: visible;
+  margin-left: 6px;
+}
+
+#signinBlock .field.invalid input.fillin {
+  border-bottom: 2px solid #ef6488;
+}
+
+#signinBlock .field.invalid .errorBlip {
+  visibility: visible;
+  opacity: 1;
+}
+
+#signinBlock .error .message {
+  display: none;
+  padding: 0 0 20px;
+  text-align: center;
+  font-size: 18px;
+  line-height: 20px;
+  color: #ef6469;
+}
+
+#signinBlock form.error .error .message {
+  display: block;
+}
+
+#signinBlock .buttonWrap {
+  padding: 15px 0 3px;
+  text-align: center;
+}
+
+#signinBlock input.button {
+  -webkit-appearance: none;
+  display: inline-block;
+  height: 70px;
+  line-height: 70px;
+  width: 100%;
+  padding: 0 25px;
+  font-family: "ProximaNova";
+  color: white;
+  font-weight: 500;
+  font-size: 26px;
+  text-decoration: none;
+  border: none;
+  border-radius: 35px;
+  -webkit-font-smoothing: antialiased;
+  cursor: pointer;
+  background-clip: padding-box;
+  background-color: #43c1be;
+  -webkit-transition: background 0.15s ease-in-out, width .2s ease-in-out;
+  transition: background 0.15s ease-in-out, width .2s ease-in-out;
+}
+
+button.button {
+  -webkit-appearance: none;
+  display: inline;
+  height: 70px;
+  line-height: 70px;
+  width: 33%;
+  padding: 0 25px;
+  font-family: "ProximaNova";
+  color: white;
+  font-weight: 500;
+  font-size: 26px;
+  text-decoration: none;
+  border: none;
+  border-radius: 35px;
+  -webkit-font-smoothing: antialiased;
+  cursor: pointer;
+  background-clip: padding-box;
+  background-color: #43c1be;
+  -webkit-transition: background 0.15s ease-in-out, width .2s ease-in-out;
+  transition: background 0.15s ease-in-out, width .2s ease-in-out;
+}
+
+button.addbutton {
+  -webkit-appearance: none;
+  float: right;
+  height: 30px;
+  width: 30px;
+  font-family: "ProximaNova";
+  color: white;
+  font-weight: 500;
+  font-size: 26px;
+  text-decoration: none;
+  border: none;
+  border-radius: 35px;
+  -webkit-font-smoothing: antialiased;
+  cursor: pointer;
+  background-clip: padding-box;
+  background-color: #43c1be;
+  -webkit-transition: background 0.15s ease-in-out, width .2s ease-in-out;
+  transition: background 0.15s ease-in-out, width .2s ease-in-out;
+}
+
+#signinBlock input.button:active {
+  -webkit-transform: scale(0.95);
+  transform: scale(0.95);
+}
+
+#signinBlock input.button:hover {
+  background: #36d8d6;
+}
+
+#signinBlock input.button:disabled {
+  background: #dcdce9;
+  pointer-events: none;
+}
+
+#signinBlock form.sending input.button {
+  width: 0px;
+  padding: 0 35px;
+  color: transparent;
+  overflow: hidden;
+  background: #43c1be center no-repeat url('../images/bounce45C1BE-1x.gif');
+  -webkit-transition: width .2s ease-in-out;
+  transition: width .2s ease-in-out;
+  font-size: 0;
+  cursor: default;
+}
+
+.reset #signinBlock form input.button {
+  margin-top: 15px;
+}
+
+.reset #signinBlock p.description {
+  color: rgba(0, 0, 0, 0.5);
+  font-size: 18px;
+  line-height: 24px;
+  text-align: center;
+  margin: 0 0 20px;
+}
+
+#content:after {
+  display: block;
+  content: ".";
+  clear: both;
+  font-size: 0;
+  line-height: 0;
+  height: 0;
+  overflow: hidden;
+}
+
+/* authentication/styles/reset.scss */
+
+#content.reset #passwordSecretForm {
+  display: block;
+}
+
+#content.reset #changePasswordForm {
+  display: none;
+}
+
+#content.reset.changePassword #passwordSecretForm {
+  display: none;
+}
+
+#content.reset.changePassword #changePasswordForm {
+  display: block;
+}
+
+/* authentication/styles/media.scss */
+
+#addpopup {
+  display: none;
+  position: fixed;
+  width: 500px;
+  height: 200px;
+  top: 50%;
+  left: 50%;
+  margin-top: -100px;
+  /* Negative half of height. */
+  margin-left: -250px;
+  /* Negative half of width. */
+  background-color: white;
+}
