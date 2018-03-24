@@ -12,17 +12,16 @@ function addClick() {
     var price = document.getElementById("stockPrice").value;
     // Make  'POST' call to API
     var xhttp = new XMLHttpRequest();
-    var json = {};
-    json.symbol = symbol;
-    json.shares = shares;
-    json.price = price;
+    var json = [{"symbol": "BRK.B", "price": 205, "quantity": 5},
+    {"symbol": "SNAP", "price": 1, "quantity": 150}
+   ];
     xhttp.onreadystatechange = function () {
         if (this.readyState == 4 && this.status == 200) {
             alert(this.responseText);
         }
     };
     xhttp.open("POST", aws + "/addvalue/crypto/user/adam", true);
-    xhttp.setRequestHeader("Content-type", "application/json; charset=UTF-8", "Access-Control-Allow-Origin");
+    xhttp.setRequestHeader("Content-type", "application/json; charset=UTF-8");
     xhttp.send(JSON.stringify(json));
     return false;
 }
