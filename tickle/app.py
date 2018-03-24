@@ -1,34 +1,54 @@
 from chalice import Chalice
+import boto3
+
+dynamodb = boto3.resource('dynamodb', region_name='us-east-1')
 
 app = Chalice(app_name='tickle')
 
 
-@app.route('/')
+@app.route('/xping')
 def index():
+    print("Table status: trying")
+    table = dynamodb.create_table(
+        TableName='Portfolios',
+        KeySchema=[
+            {
+                'AttributeName': 'user',
+                'KeyType': 'HASH'  # Partition key
+            }
+        ],
+        AttributeDefinitions=[
+            {
+                'AttributeName': 'user',
+                'AttributeType': 'S'
+            }
+
+        ],
+        ProvisionedThroughput={
+            'ReadCapacityUnits': 10,
+            'WriteCapacityUnits': 10
+        }
+    )
+
+    print("Table status:", table.table_status)
     return {'hello': 'world'}
 
 
-# The view function above will return {"hello": "world"}
-# whenever you make an HTTP GET request to '/'.
-#
-# Here are a few more examples:
-#
-# @app.route('/hello/{name}')
-# def hello_name(name):
-#    # '/hello/james' -> {"hello": "james"}
-#    return {'hello': name}
-#
-# @app.route('/users', methods=['POST'])
-# def create_user():
-#     # This is the JSON body the user sent in their POST request.
-#     user_as_json = app.current_request.json_body
-#     # We'll echo the json body back to the user in a 'user' key.
-#     return {'user': user_as_json}
-#
-# See the README documentation for more examples.
-#
+@app.route('/testput')
+def index():
+    dynamodb.Table('Portfolios').put_item(
+        Item={
+            'user': 'Chino'
+        })
+    return {'hello': 'world'}
 
 
 @app.route('/value/portfolio/user/{user}', methods=['GET'])
 def portfolio_value(user):
     return {"portfolio value for user: {}".format(user): 90000000000}
+
+
+@app.route('/addvalue/crypto/user/{user}', methods=['POST'])
+def add_value(user):
+    return user
+
