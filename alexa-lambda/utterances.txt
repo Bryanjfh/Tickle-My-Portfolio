@@ -1,0 +1,2 @@
+getGreeting say hello
+getGreeting say hi

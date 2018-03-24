@@ -2,4 +2,6 @@
 HackISU - 2018
 
 
-[Stock API](https://iextrading.com/developer/docs/#financials)
+[IEX Trading API](https://iextrading.com/developer/docs/#financials)
+
+[Coinmarketcap API](https://coinmarketcap.com/api/)
