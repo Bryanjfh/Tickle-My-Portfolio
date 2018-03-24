@@ -22,7 +22,7 @@ function addClick() {
         }
     };
     xhttp.open("POST", aws + "/addvalue/crypto/user/adam", true);
-    xhttp.setRequestHeader("Content-type", "application/json; charset=UTF-8", "Access-Control-Allow-Origin");
+    xhttp.setRequestHeader("Content-type", "application/json; charset=UTF-8",);
     xhttp.send(JSON.stringify(json));
     return false;
 }
@@ -30,6 +30,7 @@ function addClick() {
 function displayStocks() {
     alert("Display Stocks in List.");
     // Make 'GET' call to API
+    
     return true;
 }
 
