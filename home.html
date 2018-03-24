@@ -14,7 +14,7 @@
             <u>{User}</u>
         </h1>
         <div><span id="totalValue"></span></div>
-        <button class="addbutton" onclick="">+</button>
+        <button class="addbutton" onclick="javascript:document.getElementById('addpopup').style.display = 'block';return true;">+</button>
     </div>
     <div id="menuButtons">
         <button class="button" onclick="">Stock</button>
@@ -23,5 +23,17 @@
     </div>
     <div id="infoArea"></div>
 </body>
+
+<div id="addpopup">
+    <form action="javascript:addClick()">
+        <label for="name">Stock Name:</label>
+        <input type="text" name="name" id="stockName">
+        <label for="shares">Shared Purchased:</label>
+        <input type="text" name="shares" id="stockShares">
+        <label for="price">Price Purchased At:</label>
+        <input type="text" name="price" id="stockPrice">
+        <input type="submit" value="Enter">
+    </form>
+</div>
 
 </html>

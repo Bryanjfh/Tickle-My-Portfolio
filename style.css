@@ -529,138 +529,16 @@ button.addbutton {
 
 /* authentication/styles/media.scss */
 
-@media only screen and (max-width: 850px) {
-  #signinBlock .field .message:before {
-    display: none;
-  }
-  #signinBlock .field .message {
-    position: relative;
-    top: auto;
-    right: auto;
-    left: auto;
-    bottom: auto;
-    max-width: 100%;
-    margin: 0;
-    padding: 0;
-    height: auto;
-    color: #ef6488;
-    background: none;
-    text-align: right;
-    line-height: 30px;
-    font-size: 13px;
-    font-weight: 500;
-  }
-  #signinBlock .field.invalid .message {
-    position: relative;
-    top: auto;
-    right: auto;
-    left: auto;
-    bottom: auto;
-    max-width: 100%;
-    margin: 0;
-    padding: 0;
-    color: #ef6488;
-    background: none;
-    text-align: right;
-    line-height: 30px;
-    font-size: 13px;
-    font-weight: 500;
-  }
-  #signinBlock .field.invalid input.fillin {
-    border-bottom: 1px solid #ef6488;
-  }
-}
-
-@media only screen and (max-width: 480px) {
-  body.signin,
-  body.passwordresets {
-    background: #5b5b77;
-  }
-  body.signin #content,
-  body.passwordresets #content {
-    position: relative;
-    margin: 0 10px;
-    top: auto;
-    right: auto;
-    bottom: auto;
-    left: auto;
-    -webkit-transform: translate(0, 0);
-    transform: translate(0, 0);
-  }
-  #signinLogo {
-    margin: 0 auto 15px;
-  }
-  .resetPassLink {
-    top: auto;
-    bottom: 0;
-    line-height: 20px;
-    padding: 11px;
-  }
-  #signinBlock {
-    padding: 2em 0 0;
-    border-radius: 0;
-  }
-  #signinBlock .passRow.field input.fillin {
-    width: 100%;
-  }
-  #signinBlock p.description {
-    padding: 0 1em;
-  }
-  #signinBlock .formContainer .signinRow {
-    margin: 0 1em 0.5em;
-  }
-  #signinBlock .field .errorBlip {
-    bottom: 12px;
-  }
-  #signinBlock input.fillin:focus {
-    background: #fff;
-    border: solid 1px #8abbfc;
-  }
-  #signinBlock input.fillin {
-    width: 100%;
-    padding: 11px;
-    height: auto;
-    box-sizing: border-box;
-    font-size: 18px;
-    line-height: 20px;
-    box-shadow: none;
-    background: #f9fafb;
-    border: 1px solid #e0e6ea;
-    outline: none;
-    color: #333;
-    -moz-appearance: none;
-    -webkit-appearance: none;
-    appearance: none;
-  }
-  #signinBlock input.button:hover {
-    -webkit-transition: none;
-    transition: none;
-  }
-  #signinBlock input.button:active {
-    -webkit-transition: none;
-    transition: none;
-    -webkit-transform: none;
-    transform: none;
-  }
-  #signinBlock input.button {
-    border-radius: 0;
-    height: 60px;
-    width: 100%;
-    font: 20px / 60px ProximaNova;
-  }
-  #signinBlock .buttonWrap {
-    padding: 0;
-    margin: 3em 0 0;
-  }
-  #signinBlock form.sending input.button:active {
-    -webkit-transition: none;
-    transition: none;
-    -webkit-transform: none;
-    transform: none;
-  }
-  #signinBlock form.sending input.button {
-    width: 100%;
-    -webkit-transition: none;
-    transition: none;
-  }
+#addpopup {
+  display: none;
+  position: fixed;
+  width: 500px;
+  height: 200px;
+  top: 50%;
+  left: 50%;
+  margin-top: -100px;
+  /* Negative half of height. */
+  margin-left: -250px;
+  /* Negative half of width. */
+  background-color: white;
 }
