@@ -31,4 +31,4 @@ def index():
 
 @app.route('/value/portfolio/user/{user}', methods=['GET'])
 def portfolio_value(user):
-    return {"portfolio value": 90000000000}
+    return {"portfolio value for user: {}".format(user): 90000000000}
