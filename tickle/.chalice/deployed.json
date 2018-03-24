@@ -1,0 +1,12 @@
+{
+  "dev": {
+    "region": "us-east-1",
+    "api_handler_name": "tickle-dev",
+    "api_handler_arn": "arn:aws:lambda:us-east-1:155598489523:function:tickle-dev",
+    "rest_api_id": "2ji8y26hd8",
+    "lambda_functions": {},
+    "chalice_version": "1.1.1",
+    "api_gateway_stage": "api",
+    "backend": "api"
+  }
+}
