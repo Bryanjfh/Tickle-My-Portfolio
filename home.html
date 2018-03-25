@@ -27,13 +27,15 @@
 
 <div id="addpopup">
     <form onsubmit="return addClick();">
+        <p> <b><u>Adding a new stock to your portfolio </u></b></p> <br>
         <label for="name">Stock Name:</label>
-        <input type="text" name="name" id="stockName">
+        <input type="text" name="name" id="stockName"><br><br>
         <label for="shares">Shared Purchased:</label>
-        <input type="text" name="shares" id="stockShares">
+        <input type="text" name="shares" id="stockShares"><br><br>
         <label for="price">Price Purchased At:</label>
-        <input type="text" name="price" id="stockPrice">
+        <input type="text" name="price" id="stockPrice"><br><br>
         <input type="submit" value="Enter">
+        <button class="button1" onClick="javascript:document.getElementById('addpopup').style.display = 'none';return true;">Cancel</button>
     </form>
 </div>
 
