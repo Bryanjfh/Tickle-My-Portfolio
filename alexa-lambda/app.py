@@ -53,7 +53,7 @@ def get_welcome_response():
     card_title = "Hello"
     # speech_output = "Say: show me my cryptos - show me my stocks - or show me my whole porfolio"
 
-    speech_output = "Welcome"
+    speech_output = "Please say: show me my cryptocurrency portfolio - show me my stocks portfolio - or show me my combined portfolio"
 
     # If the user either does not reply to the welcome message or says something
     # that is not understood, they will be prompted again with this text.
@@ -77,12 +77,36 @@ def say_hello():
 
 def say_Combine():
     card_title = "Combined"
-    greeting_string = "Mortal Kombat - PB&J"
+
+    # crypto
+    r = requests.get("https://2ji8y26hd8.execute-api.us-east-1.amazonaws.com/api/value/crypto/user/adam")
+
+    temp = json.loads(r.content)
+    crypto_value = float(temp['value'])
+
+    # stocks
+    r2 = requests.get("https://2ji8y26hd8.execute-api.us-east-1.amazonaws.com/api/value/portfolio/user/adam")
+
+    temp2 = json.loads(r2.content)
+    stocks_value = float(temp2['value'])
+
+    #combined
+    combined_value = int(crypto_value + stocks_value)
+
+    greeting_string = "Your current Combined Portfolio value is: {} dollars".format(combined_value)
+
+    # greeting_string = j['total_stock']
     return build_response({}, build_speechlet_response(card_title, greeting_string, " ", True))
 
 def say_Crypto():
-    card_title = "Cryptos"
-    greeting_string = "In your Cryptocurrencies Portfolio you have - 100 thousand dollars"
+    card_title = "Crypto"
+
+    r = requests.get("https://2ji8y26hd8.execute-api.us-east-1.amazonaws.com/api/value/crypto/user/adam")
+
+    j = json.loads(r.content)
+    greeting_string = "Your current Cryptocurrency Portfolio value is: {} dollars".format(j['value'])
+
+    # greeting_string = j['total_stock']
     return build_response({}, build_speechlet_response(card_title, greeting_string, " ", True))
 
 def say_Stock():

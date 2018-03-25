@@ -100,21 +100,11 @@ def total_stock_value(stock_symbols):
 
 
         value += (price * quant)
-    return {'value': value, 'stocks': stock_symbols}
+    return {'value': int(value), 'stocks': stock_symbols}
 
 #
 # CRYPTO
 #
-
-# @app.route('/testput')
-# def test_put():
-#     dynamodb.Table('Portfolios').put_item(
-#         Item={
-#             'user': 'Chino',
-#             'stocks': [{'symbol': 'BRK.B', 'price': 205, 'quantity': 5},
-#                        {'symbol': 'SNAP', 'price': 1, 'quantity': 150}]
-#         })
-#     return {'hello': 'world'}
 
 
 @app.route('/addcryptos/user/{user}', methods=['POST', 'OPTIONS'])
@@ -166,22 +156,3 @@ def crypto_value(user):
 def add_value_crypto(user):
     stuff = app.current_request.json_body
     return {user: stuff}
-
-
-
-
-        # symbols += (symbol['symbol'] + ",")
-
- # PARSING CRYPTO
-    # results = json.loads(requests.get("https://api.iextrading.com/1.0/stock/market/batch?symbols={}&types=price".format(symbols)).content)
-    # for result in results:
-    #     quant = int()
-    #     for symbol in stock_symbols:
-    #         if symbol['symbol'].encode('ascii') == result:
-    #             quant = int(symbol['quantity'])
-    #             symbol['value'] = results[result]['price']
-    #         price = results[result]['price']
-    #
-    #
-    #     value += (price * quant)
-    # return {'value': value, 'stocks': stock_symbols}
