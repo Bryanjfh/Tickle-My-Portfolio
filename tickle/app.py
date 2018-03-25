@@ -138,14 +138,23 @@ def test_update_crypto(user):
     return 200
 
 @app.route('/value/crypto/user/{user}', methods=['GET'])
-def portfolio_value(user):
+def crypto_value(user):
     stuff = dynamodb.Table('Portfolios').get_item(
         Key={'user': user}
     )
     cryptos = list()
+    total = 0
+    coins = ""
     for crypto in stuff['Item']['cryptos']:
-        stocks.append({'symbol': crypto['symbol'], 'quantity': crypto['quantity'], 'paid': crypto['price']})
-    return total_stock_value(cryptos)
+        coin_name = crypto['symbol']
+        total_coins = int(crypto['quantity'])
+        result = json.loads(requests.get('https://api.coinmarketcap.com/v1/ticker/{}'.format(coin_name)).content)
+
+        price = float(result[0]["price_usd"])
+
+        total += (total_coins * price)
+
+    return int(total)
 
 
 @app.route('/addvalue/crypto/user/{user}', methods=['POST', 'OPTIONS'])
@@ -155,21 +164,33 @@ def add_value_crypto(user):
 
 
 def total_crypto_value(crypto_symbols):
-    value = 0
-    symbols = ""
-    for symbol in crypto_symbols:
-        symbols += (symbol['symbol'] + ",")
+    total = 0
+    coins = ""
+    for crypto in stuff['Item']['cryptos']:
+        coin_name = crypto['symbol']
+        total_coins = int(crypto['quantity'])
+        result = json.loads(requests.get('https://api.coinmarketcap.com/v1/ticker/{}'.format(coin_name)).content)
+
+        price = float(result[0]["price_usd"])
+
+        total += (total_coins * price)
+
+    return {'value': total}
+
+
+
+        # symbols += (symbol['symbol'] + ",")
 
  # PARSING CRYPTO
-    results = json.loads(requests.get("https://api.iextrading.com/1.0/stock/market/batch?symbols={}&types=price".format(symbols)).content)
-    for result in results:
-        quant = int()
-        for symbol in stock_symbols:
-            if symbol['symbol'].encode('ascii') == result:
-                quant = int(symbol['quantity'])
-                symbol['value'] = results[result]['price']
-            price = results[result]['price']
-
-
-        value += (price * quant)
-    return {'value': value, 'stocks': stock_symbols}
+    # results = json.loads(requests.get("https://api.iextrading.com/1.0/stock/market/batch?symbols={}&types=price".format(symbols)).content)
+    # for result in results:
+    #     quant = int()
+    #     for symbol in stock_symbols:
+    #         if symbol['symbol'].encode('ascii') == result:
+    #             quant = int(symbol['quantity'])
+    #             symbol['value'] = results[result]['price']
+    #         price = results[result]['price']
+    #
+    #
+    #     value += (price * quant)
+    # return {'value': value, 'stocks': stock_symbols}
