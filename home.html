@@ -7,6 +7,27 @@
     <title>Home</title>
     <link rel="stylesheet" href="style.css" />
     <script src="main.js"></script>
+
+    <!-- Table magic -->
+    <style>
+      table {
+          font-family: arial, sans-serif;
+          border-collapse: collapse;
+          color: black;
+          width: 100%;
+          background-color: grey;
+      }
+
+      td, th {
+          border: 1px solid #dddddd;
+          text-align: left;
+          padding: 8px;
+      }
+
+      tr:nth-child(even) {
+          background-color: #dddddd;
+      }
+    </style>
 </head>
 
 <body class="signin">
@@ -18,12 +39,56 @@
         <button class="addbutton" onClick="javascript:document.getElementById('addpopup').style.display = 'block';return true;">+</button>
     </div>
     <div id="menuButtons">
-        <button class="button" onclick="">Stock</button>
+        <button class="button" onclick="myTable()">Stock</button>
         <button class="button" onclick="">Crypto</button>
-        <button class="button" onclick="">Combine</button>
     </div>
     <div id="infoArea"></div>
+
+
+  <script>
+  function myTable() {
+      var x = document.getElementById("stocktable");
+      if (x.style.display === "none") {
+          x.style.display = "block";
+      } else {
+          x.style.display = "none";
+      }
+  }
+  </script>
+
 </body>
+
+<div id="stocktable" style="display:none">
+  <br><br>
+  <h2>Your Current Stocks</h2>
+  <br><br>
+    <table>
+      <tr>
+        <th>Name</th>
+        <th>Quantity</th>
+        <th>Price Paid</th>
+        <th>Current Price</th>
+      </tr>
+      <tr>
+        <td>Snap</td>
+        <td>1</td>
+        <td>$16.53</td>
+        <td>$2</td>
+      </tr>
+      <tr>
+        <td>GG</td>
+        <td>2</td>
+        <td>$5000</td>
+        <td>$2</td>
+      </tr>
+      <tr>
+        <td>Rip</td>
+        <td>0.1</td>
+        <td>$999999</td>
+        <td>$2</td>
+      </tr>
+    </table>
+  </div>
 
 <div id="addpopup">
     <form onsubmit="return addClick();">
