@@ -2,7 +2,6 @@ from chalice import Chalice
 import boto3
 import boto3
 import json
-import yaml
 import requests
 
 dynamodb = boto3.resource('dynamodb', region_name='us-east-1')
@@ -54,7 +53,7 @@ def test_update(user):
     json_input = app.current_request.json_body['stocks']
     for stock in json_input:
         new_stock = json.dumps(stock)
-        new_stock = yaml.safe_load(new_stock)
+        new_stock = json.loads(new_stock)
         new_stock2 = {
             'symbol': new_stock['symbol'], 'price': new_stock['price'], 'quantity': new_stock['quantity']}
         stocks2.append(new_stock2)
@@ -90,7 +89,7 @@ def total_stock_value(stock_symbols):
     symbols = ""
     for symbol in stock_symbols:
         symbols += (symbol['symbol'] + ",")
-    results = yaml.safe_load(requests.get("https://api.iextrading.com/1.0/stock/market/batch?symbols={}&types=price".format(symbols)).content)
+    results = json.loads(requests.get("https://api.iextrading.com/1.0/stock/market/batch?symbols={}&types=price".format(symbols)).content)
     for result in results:
         quant = int()
         for symbol in stock_symbols:
