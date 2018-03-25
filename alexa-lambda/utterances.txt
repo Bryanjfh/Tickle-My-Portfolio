@@ -14,5 +14,10 @@ getStock show me stocks portfolio
 getStock stocks
 getStock stocks portfolio
 getStock stock
+
 getCombine my combine portfolio
 getCombine my whole portfolio
+getCombine my total portfolio
+getCombine combine portfolio
+getCombine whole portfolio
+getCombine total portfolio
