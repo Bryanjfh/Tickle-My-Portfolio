@@ -49,10 +49,10 @@ def build_response(session_attributes, speechlet_response):
 def get_welcome_response():
     session_attributes = {}
     card_title = "Hello"
-    speech_output = "Welcome to the Hello World demonstration... Ask me to say hello."
+    speech_output = "Say: show me my cryptos - show me my stocks - show me my porfolio"
     # If the user either does not reply to the welcome message or says something
     # that is not understood, they will be prompted again with this text.
-    reprompt_text = "I'm sorry - I didn't understand. You should ask me to say hello..."
+    reprompt_text = "I'm sorry - I didn't understand. You should ask me to say my portfolio..."
     should_end_session = False
     return build_response(session_attributes, build_speechlet_response(card_title, speech_output, reprompt_text, should_end_session))
 
@@ -66,12 +66,24 @@ def handle_session_end_request():
         card_title, speech_output, None, should_end_session))
 
 def say_hello():
-    """
-    Return a suitable greeting...
-    """
     card_title = "Greeting Message"
     greeting_string = "Adam Sucks"
-    return build_response({}, build_speechlet_response(card_title, greeting_string, "Ask me to say hello...", True))
+    return build_response({}, build_speechlet_response(card_title, greeting_string, " ", True))
+
+def say_Combine():
+    card_title = "Greeting Message"
+    greeting_string = "Mortal Kombat - PB&J"
+    return build_response({}, build_speechlet_response(card_title, greeting_string, " ", True))
+
+def say_Crypto():
+    card_title = "Greeting Message"
+    greeting_string = "In your Crypto Portfolio you have - 100 thousand dollars"
+    return build_response({}, build_speechlet_response(card_title, greeting_string, " ", True))
+
+def say_Stock():
+    card_title = "Greeting Message"
+    greeting_string = "In your Stocks Portfolio you have - 50 dollars"
+    return build_response({}, build_speechlet_response(card_title, greeting_string, " ", True))
 
 # --------------- Events ------------------
 
@@ -101,14 +113,20 @@ def on_intent(intent_request, session):
     intent_name = intent_request['intent']['name']
 
     # Dispatch to your skill's intent handlers
-    if intent_name == "getGreeting":
-        return say_hello()
+    if intent_name == "getCombine":
+        return say_Combine()
+    elif intent_name == "getStock":
+        return say_Stock()
+        # return get_welcome_response()
+    elif intent_name == "getCrypto":
+        return say_Crypto()
+        # return get_welcome_response()
     elif intent_name == "AMAZON.HelpIntent":
         return get_welcome_response()
     elif intent_name == "AMAZON.CancelIntent" or intent_name == "AMAZON.StopIntent":
         return handle_session_end_request()
     else:
-        raise ValueError("Invalid intent")
+        raise  get_welcome_response()
 
 
 def on_session_ended(session_ended_request, session):
