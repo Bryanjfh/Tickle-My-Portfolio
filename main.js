@@ -87,7 +87,7 @@ function displayCryptos() {
 
         var final = "";
         for (var i = 0; i < cryptos_obj.length; i++) {
-          final += cryptos_obj[i].symbol + " purchased at:" + cryptos_obj[i].paid + " quantity: " + cryptos_obj[i].quantity + " \n";
+          final += cryptos_obj[i].symbol + "<br><br>" + " purchased at:" + cryptos_obj[i].paid + "<br><br>" + " quantity: " + cryptos_obj[i].quantity + "<br><br>"+ " \n";
           // console.log(cryptos_obj[i].symbol);
         }
         // for(var crypto in cryptos_obj) {
