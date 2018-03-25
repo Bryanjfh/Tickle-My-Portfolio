@@ -9,11 +9,15 @@
       ],
       "intent": "MyColorIsIntent"
     },
-
     {
-      "intent": "WhatsMyColorIntent"
+      "intent": "getCrypto"
     },
-
+    {
+      "intent": "getStock"
+    },
+    {
+      "intent": "getCombine"
+    },
     {
       "intent": "AMAZON.HelpIntent"
     }

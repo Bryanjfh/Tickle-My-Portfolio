@@ -1,6 +1,8 @@
 # This attempts to be (more or less) the simplest possible hello world Alexa skill...
 
 from __future__ import print_function
+from botocore.vendored import requests
+import json
 
 # We'll start with a couple of globals...
 CardTitlePrefix = "Greeting"
@@ -49,7 +51,10 @@ def build_response(session_attributes, speechlet_response):
 def get_welcome_response():
     session_attributes = {}
     card_title = "Hello"
-    speech_output = "Say: show me my cryptos - show me my stocks - show me my porfolio"
+    # speech_output = "Say: show me my cryptos - show me my stocks - or show me my whole porfolio"
+
+    speech_output = "Welcome"
+
     # If the user either does not reply to the welcome message or says something
     # that is not understood, they will be prompted again with this text.
     reprompt_text = "I'm sorry - I didn't understand. You should ask me to say my portfolio..."
@@ -71,18 +76,24 @@ def say_hello():
     return build_response({}, build_speechlet_response(card_title, greeting_string, " ", True))
 
 def say_Combine():
-    card_title = "Greeting Message"
+    card_title = "Combined"
     greeting_string = "Mortal Kombat - PB&J"
     return build_response({}, build_speechlet_response(card_title, greeting_string, " ", True))
 
 def say_Crypto():
-    card_title = "Greeting Message"
-    greeting_string = "In your Crypto Portfolio you have - 100 thousand dollars"
+    card_title = "Cryptos"
+    greeting_string = "In your Cryptocurrencies Portfolio you have - 100 thousand dollars"
     return build_response({}, build_speechlet_response(card_title, greeting_string, " ", True))
 
 def say_Stock():
-    card_title = "Greeting Message"
-    greeting_string = "In your Stocks Portfolio you have - 50 dollars"
+    card_title = "Stock"
+
+    r = requests.get("https://2ji8y26hd8.execute-api.us-east-1.amazonaws.com/api/value/portfolio/user/adam")
+
+    j = json.loads(r.content)
+    greeting_string = "Your current Stocks Portfolio value is: {} dollars".format(j['value'])
+
+    # greeting_string = j['total_stock']
     return build_response({}, build_speechlet_response(card_title, greeting_string, " ", True))
 
 # --------------- Events ------------------
