@@ -146,6 +146,11 @@ def crypto_value(user):
     total = 0
     coins = ""
     for crypto in stuff['Item']['cryptos']:
+        # add to list
+
+        cryptos.append({'symbol': crypto['symbol'], 'quantity': crypto['quantity'], 'paid': crypto['price']})
+
+        # calculations NO HELPER
         coin_name = crypto['symbol']
         total_coins = int(crypto['quantity'])
         result = json.loads(requests.get('https://api.coinmarketcap.com/v1/ticker/{}'.format(coin_name)).content)
@@ -154,7 +159,7 @@ def crypto_value(user):
 
         total += (total_coins * price)
 
-    return int(total)
+    return {'value': int(total), 'cryptos': cryptos}
 
 
 @app.route('/addvalue/crypto/user/{user}', methods=['POST', 'OPTIONS'])
@@ -162,20 +167,6 @@ def add_value_crypto(user):
     stuff = app.current_request.json_body
     return {user: stuff}
 
-
-def total_crypto_value(crypto_symbols):
-    total = 0
-    coins = ""
-    for crypto in stuff['Item']['cryptos']:
-        coin_name = crypto['symbol']
-        total_coins = int(crypto['quantity'])
-        result = json.loads(requests.get('https://api.coinmarketcap.com/v1/ticker/{}'.format(coin_name)).content)
-
-        price = float(result[0]["price_usd"])
-
-        total += (total_coins * price)
-
-    return {'value': total}
 
 
 
