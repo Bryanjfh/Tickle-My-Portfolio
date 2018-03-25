@@ -31,64 +31,84 @@ function addClick() {
 }
 
 function displayStocks() {
-    // alert("Display Stocks in List.");
-    // Make 'GET' call to API
-    var i, x, j, z, w, e = "";
-    var xhttp = new XMLHttpRequest();
+  var xhttp = new XMLHttpRequest();
+  xhttp.onreadystatechange = function() {
+    if (this.readyState == 4 && this.status == 200) {
 
-   xhttp.onreadystatechange = function() {
-     if (this.readyState == 4 && this.status == 200) {
-       var str = this.responseText;
-       var obj = JSON.parse(str);
-       var stuck = new Array();
-       stuck.push(["Name", "Quantity", "Price Paid"]);
+      var str = this.responseText;
+      // var res = str.substring(1, str.length - 1);
 
-       for (i = 0; i<obj.stocks.length;i++) {
-         x = "<h2>" + obj.stocks[i].symbol + "</h2>";
-         for (j = 0; j<obj.stocks.length;j++) {
-           w = "<h2>" + obj.stocks[j].paid + "</h2>";
-           for (z = 0; z<obj.stocks.length;z++) {
-             e = "<h2>" + obj.stocks[z].quantity + "</h2>";
-             stuck.push([x, w, e]);
-           }
-         }
-       }
+      var obj = JSON.parse(str);
 
-       //Create a HTML Table element.
-       var table = document.createElement("TABLE");
-       table.border = "1";
+      // var final = obj.cryptos[0].symbol + " purchased at:" + obj.cryptos[0].paid + " quantity: " + obj.cryptos[0].quantity + "\n";
+      var stocks_obj = obj.stocks;
 
-       //Get the count of columns.
-       var columnCount = stuck[0].length;
+      var final = "";
+      for (var i = 0; i < stocks_obj.length; i++) {
+        final += stocks_obj[i].symbol + " purchased at:" + stocks_obj[i].paid + " quantity: " + stocks_obj[i].quantity + " \n";
+        // console.log(stocks_obj[i].symbol);
+      }
+      // for(var crypto in cryptos_obj) {
+      //   console.log(crypto.symbol);
+      // }
 
-       //Add the header row.
-       var row = table.insertRow(-1);
-       for (var i = 0; i < columnCount; i++) {
-           var headerCell = document.createElement("TH");
-           headerCell.innerHTML = stuck[0][i];
-           row.appendChild(headerCell);
-       }
+      // document.getElementById("stocktable").innerHTML = "Cryptocurrency Portfolio Value: " + obj.value;
 
-       //Add the data rows.
-       for (var i = 1; i < stuck.length; i++) {
-           row = table.insertRow(-1);
-           for (var j = 0; j < columnCount; j++) {
-               var cell = row.insertCell(-1);
-               cell.innerHTML = stuck[i][j];
-           }
-       }
+      document.getElementById("stocktable").innerHTML = final;
 
-       var dvTable = document.getElementById("dvTable");
-       dvTable.innerHTML = "";
-       dvTable.appendChild(table);
 
-     }
-   };
-   xhttp.open("GET", rip2, true);
-   xhttp.send();
+    }
+  };
+  xhttp.open("GET", "https://2ji8y26hd8.execute-api.us-east-1.amazonaws.com/api/value/portfolio/user/adam", true);
+  xhttp.send();
+
+  var x = document.getElementById("stocktable");
+  if (x.style.display === "none") {
+      x.style.display = "block";
+  } else {
+      x.style.display = "none";
+  }
+  return true;
 }
 
 function displayCryptos() {
-    alert("Display Cryptos in List.");
+
+    var xhttp = new XMLHttpRequest();
+    xhttp.onreadystatechange = function() {
+      if (this.readyState == 4 && this.status == 200) {
+
+        var str = this.responseText;
+        // var res = str.substring(1, str.length - 1);
+
+        var obj = JSON.parse(str);
+
+        // var final = obj.cryptos[0].symbol + " purchased at:" + obj.cryptos[0].paid + " quantity: " + obj.cryptos[0].quantity + "\n";
+        var cryptos_obj = obj.cryptos;
+
+        var final = "";
+        for (var i = 0; i < cryptos_obj.length; i++) {
+          final += cryptos_obj[i].symbol + " purchased at:" + cryptos_obj[i].paid + " quantity: " + cryptos_obj[i].quantity + " \n";
+          // console.log(cryptos_obj[i].symbol);
+        }
+        // for(var crypto in cryptos_obj) {
+        //   console.log(crypto.symbol);
+        // }
+
+        // document.getElementById("stocktable").innerHTML = "Cryptocurrency Portfolio Value: " + obj.value;
+
+        document.getElementById("stocktable").innerHTML = final;
+
+
+      }
+    };
+    xhttp.open("GET", "https://2ji8y26hd8.execute-api.us-east-1.amazonaws.com/api/value/crypto/user/adam", true);
+    xhttp.send();
+
+    var x = document.getElementById("stocktable");
+    if (x.style.display === "none") {
+        x.style.display = "block";
+    } else {
+        x.style.display = "none";
+    }
     return true;
 }

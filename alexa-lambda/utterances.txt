@@ -21,3 +21,6 @@ getCombine my total portfolio
 getCombine combine portfolio
 getCombine whole portfolio
 getCombine total portfolio
+getCombine combine
+getCombine whole
+getCombine total
