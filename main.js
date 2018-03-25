@@ -45,7 +45,7 @@ function displayStocks() {
 
       var final = "";
       for (var i = 0; i < stocks_obj.length; i++) {
-        final += stocks_obj[i].symbol + " purchased at:" + stocks_obj[i].paid + " quantity: " + stocks_obj[i].quantity + " \n";
+        final += stocks_obj[i].symbol + "<br><br>" + " purchased at:" + stocks_obj[i].paid + "<br><br>" + " quantity: " + stocks_obj[i].quantity + "<br><br>"+ " \n";
         // console.log(stocks_obj[i].symbol);
       }
       // for(var crypto in cryptos_obj) {
