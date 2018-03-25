@@ -68,28 +68,6 @@ def test_update(user):
     )
     return 200
 
-
-@app.route('/addcryptos/user/{user}', methods=['POST', 'OPTIONS'])
-def test_update(user):
-    cryptos2 = list()
-    json_input = app.current_request.json_body['crypto']
-    for stock in json_input:
-        crypto = json.dumps(stock)
-        crypto = yaml.safe_load(crypto)
-        crypto2 = {
-            'symbol': crypto['symbol'], 'price': crypto['price'], 'quantity': crypto['quantity']}
-        cryptos2.append(crypto2)
-
-    dynamodb.Table('Portfolios').update_item(
-        Key={
-            'user': user
-        },
-        UpdateExpression="SET cryptos = list_append(if_not_exists(cryptos, :empty_list), :cryptovals)",
-        ExpressionAttributeValues={":cryptovals": cryptos2, ":empty_list": []}
-    )
-    return 200
-
-
 @app.route('/value/portfolio/user/{user}', methods=['GET'])
 def portfolio_value(user):
     stuff = dynamodb.Table('Portfolios').get_item(
@@ -97,7 +75,7 @@ def portfolio_value(user):
     )
     stocks = list()
     for stock in stuff['Item']['stocks']:
-        stocks.append({'symbol': stock['symbol'], 'quantity': stock['quantity']})
+        stocks.append({'symbol': stock['symbol'], 'quantity': stock['quantity'], 'paid': stock['price']})
     return total_stock_value(stocks)
 
 
@@ -116,9 +94,11 @@ def total_stock_value(stock_symbols):
     for result in results:
         quant = int()
         for symbol in stock_symbols:
-            print type(symbol['quantity'])
             if symbol['symbol'].encode('ascii') == result:
                 quant = int(symbol['quantity'])
+                symbol['value'] = results[result]['price']
             price = results[result]['price']
+
+
         value += (price * quant)
-    return {'total_stock': value}
+    return {'value': value, 'stocks': stock_symbols}
