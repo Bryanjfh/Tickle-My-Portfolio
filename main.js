@@ -1,6 +1,7 @@
 // AWS GATEWAY:
 // var aws = "https://2ji8y26hd8.execute-api.us-east-1.amazonaws.com/api";
 var rip = "https://2ji8y26hd8.execute-api.us-east-1.amazonaws.com/api/addstocks/user/adam";
+var rip2 ="https://2ji8y26hd8.execute-api.us-east-1.amazonaws.com/api/value/portfolio/user/adam";
 
 function fakeLogin() {
     document.location.href = "home.html";
@@ -18,52 +19,73 @@ function addClick() {
    ];
     xhttp.onreadystatechange = function () {
         if (this.readyState == 4 && this.status == 200) {
-            alert(this.responseText);
+         var getstock = this.responseText;
+         getstock = JSON.parse;
         }
     };
     // xhttp.open("POST", aws + "/addvalue/crypto/user/adam", true);
-    xhttp.open("POST", rip, true);
+    xhttp.open("GET", rip2, true);
     xhttp.setRequestHeader("Content-type", "application/json; charset=UTF-8",);
-    xhttp.send(JSON.stringify(json));
+    xhttp.send(null);
     return false;
 }
 
 function displayStocks() {
     // alert("Display Stocks in List.");
     // Make 'GET' call to API
+    var i, x, j, z, w, e = "";
+    var xhttp = new XMLHttpRequest();
 
-    var totalRows = 5;
-    var cellsInRow = 4;
-    var min = 1;
-    var max = 10;
+   xhttp.onreadystatechange = function() {
+     if (this.readyState == 4 && this.status == 200) {
+       var str = this.responseText;
+       var obj = JSON.parse(str);
+       var stuck = new Array();
+       stuck.push(["Name", "Quantity", "Price Paid"]);
 
-        // function drawTable() {
-            // get the reference for the body
-            var div1 = document.getElementById('div1');
+       for (i = 0; i<obj.stocks.length;i++) {
+         x = "<h2>" + obj.stocks[i].symbol + "</h2>";
+         for (j = 0; j<obj.stocks.length;j++) {
+           w = "<h2>" + obj.stocks[j].paid + "</h2>";
+           for (z = 0; z<obj.stocks.length;z++) {
+             e = "<h2>" + obj.stocks[z].quantity + "</h2>";
+             stuck.push([x, w, e]);
+           }
+         }
+       }
 
-            // creates a <table> element
-            var tbl = document.createElement("table");
+       //Create a HTML Table element.
+       var table = document.createElement("TABLE");
+       table.border = "1";
 
-            // creating rows
-            for (var r = 0; r < totalRows; r++) {
-                var row = document.createElement("tr");
+       //Get the count of columns.
+       var columnCount = stuck[0].length;
 
-    	     // create cells in row
-                 for (var c = 0; c < cellsInRow; c++) {
-                    var cell = document.createElement("td");
-                    var cellText = document.createTextNode("hi");
-                    cell.appendChild(cellText);
-                    row.appendChild(cell);
-                }
+       //Add the header row.
+       var row = table.insertRow(-1);
+       for (var i = 0; i < columnCount; i++) {
+           var headerCell = document.createElement("TH");
+           headerCell.innerHTML = stuck[0][i];
+           row.appendChild(headerCell);
+       }
 
-    	           tbl.appendChild(row); // add the row to the end of the table body
-            }
+       //Add the data rows.
+       for (var i = 1; i < stuck.length; i++) {
+           row = table.insertRow(-1);
+           for (var j = 0; j < columnCount; j++) {
+               var cell = row.insertCell(-1);
+               cell.innerHTML = stuck[i][j];
+           }
+       }
 
-         div1.appendChild(tbl); // appends <table> into <div1>
-    // }
-    // window.onload=drawTable;
+       var dvTable = document.getElementById("dvTable");
+       dvTable.innerHTML = "";
+       dvTable.appendChild(table);
 
-    // return true;
+     }
+   };
+   xhttp.open("GET", rip2, true);
+   xhttp.send();
 }
 
 function displayCryptos() {
