@@ -166,36 +166,9 @@ body.passwordresets #content {
   opacity: 0.8;
 }
 
-.topHead .logo {
-  display: block;
-  width: 110px;
-  height: 40px;
-  float: left;
-  background-image: url('../../network/img/logotype-grey.svg');
-  background-size: 110px;
-  background-repeat: no-repeat;
-  background-position: right center;
-  color: transparent;
-}
-
-#signinLogo {
-  position: relative;
-  display: block;
-  width: 50px;
-  height: 50px;
-  margin: -50px auto 16px;
-  background-image: url('../../images/header/uniface-knockout.svg');
-  background-repeat: no-repeat;
-  background-size: 48px;
-  background-position: center;
-  background-color: #433b5f;
-  border-radius: 100%;
-  z-index: 10;
-}
-
 #headline {
   position: relative;
-  font-size: 28px;
+  font-size: 50px;
   line-height: 30px;
   color: #D7D7EC;
   text-align: center;
@@ -530,15 +503,20 @@ button.addbutton {
 /* authentication/styles/media.scss */
 
 #addpopup {
+  font-size: 20;
+  color: black;
   display: none;
   position: fixed;
-  width: 500px;
-  height: 200px;
+  width: 32%;
+  height: 26%;
   top: 50%;
   left: 50%;
-  margin-top: -100px;
-  /* Negative half of height. */
-  margin-left: -250px;
-  /* Negative half of width. */
-  background-color: white;
+  margin-top: -10%;
+  margin-left: -49%;
+  background-color: #43c1be;
+}
+
+#stocktable {
+  color: black;
+  font-size: 25;
 }
