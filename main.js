@@ -29,16 +29,11 @@ function addClick() {
 function displayStocks() {
     alert("Display Stocks in List.");
     // Make 'GET' call to API
-    
+
     return true;
 }
 
 function displayCryptos() {
     alert("Display Cryptos in List.");
-    return true;
-}
-
-function displayAll() {
-    alert("Display all holdings in List.");
     return true;
 }

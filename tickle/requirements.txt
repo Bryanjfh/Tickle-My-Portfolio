@@ -3,3 +3,4 @@ bs4>=0.0.1
 chalice>=1.1.0
 boto3
 pynamodb
+requests
